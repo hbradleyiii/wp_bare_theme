@@ -81,7 +81,9 @@ function wp_template($file, $debug_in_header = false) {
     // Debugging
     if ( WP_DEBUG ) { 
         $filestamp = function() use ($file) {
-                echo "    <!-- [" . date('H:i:s', time()) .  '] ' . 'Called file: "' . $file . '" -->' . "\n";
+                date_default_timezone_set( 'America/Louisville' );
+                echo "\n<!-- [" . date( 'H:i:s T' ) . '] [' . timer_stop() . ' seconds] [' .
+                    get_num_queries() . ' queries] Called file: "' . $file . '" -->' . "\n\n";
             };
         if ( $debug_in_header ) {
             // Print the template filename in the header
