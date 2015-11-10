@@ -36,17 +36,18 @@ add_action('wp_footer', function() {
 // banner()
 //    returns the string for the homepage banner
 function banner() { 
-    $banner = '<div id="hbPictureFader">';
+    global $wp_query;
 
-    query_posts('post_type=banner');
+    $wp_query = new WP_Query( array( 'post_type' => 'banner' ) );
 
-    global $number_of_images;
-    $number_of_images = 0;
+    $banner = '<div class="flexslider bannerslider"><ul class="slides">';
 
     if ( have_posts()) : while ( have_posts() ) : the_post();
         global $post;
-        $banner .= get_the_post_thumbnail( $post->ID, 'large' );
-        $number_of_images++;
+        $img = get_the_post_thumbnail( $post->ID, 'large' );
+        $banner .= '<li>' . $img . '<div class="caption">' . get_the_title();
+        if (get_field('subtitle')) { $slider .= '<span>' . get_field('subtitle') . '</span>'; }
+        $banner .= '</div></li>';
     endwhile; endif; wp_reset_query();
 
     $banner .= '</div>';
