@@ -126,7 +126,7 @@ add_action('admin_init', function() {
 		'site_settings_page',
         'co_general_section',
 		array(
-			'description' => 'The phone number for Southeast Pallet Recycling.',
+			'description' => 'The company phone number.',
 			'input_type'  => 'text',
 			'input_name'  => 'co_phone',
 			'input_size'  => '12'
