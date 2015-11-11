@@ -13,11 +13,13 @@ function get_address() {
     $zipcode = get_option('co_zipcode');
     if ( $address != '' ) { 
         $address = '
-            <address class="address" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-                <span itemprop="streetAddress"> ' . $address . ' </span>
-                <span itemprop="addressLocality"> ' . $city . ', </span>
-                <span itemprop="addressRegion"> ' . $state . ' </span>
-                <span itemprop="postalCode"> ' . $zipcode . ' </span>
+            <address itemscope itemtype="http://schema.org/PostalAddress">
+                <span itemprop="address">
+                    <span itemprop="streetAddress"> ' . $address . ' </span>
+                    <span itemprop="addressLocality"> ' . $city . ', </span>
+                    <span itemprop="addressRegion"> ' . $state . ' </span>
+                    <span itemprop="postalCode"> ' . $zipcode . ' </span>
+                </span>
             </address>
             ';
     }
