@@ -8,6 +8,7 @@ $template_dir = get_template_directory();
 
 require_once($template_dir . '/functions/admin.php');
 require_once($template_dir . '/functions/banner.php');
+require_once($template_dir . '/functions/breadcrumbs.php');
 require_once($template_dir . '/functions/company-info.php');
 require_once($template_dir . '/functions/login.php');
 require_once($template_dir . '/functions/menu.php');
