@@ -1,7 +1,7 @@
 <?php wp_template(__FILE__, false);
 
 ////////////////////////////////////////////////////////////
-// content-search.php - template for displaying results in search pages
+// content-page.php - template for displaying content of pages
 
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -10,7 +10,7 @@
     </header>
 
     <div class="entry_content">
-        <?php the_excerpt(); ?>
+        <?php the_content(); ?>
     </div>
 
     <footer class="entry-footer">
