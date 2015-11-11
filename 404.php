@@ -6,11 +6,7 @@
 get_header(); ?>
 
     <main>
-        <article>
-            <h1>Page Not Found</h1>
-            <p>The page you requested could not be found.</p>
-        </article>
-        <?php get_sidebar(); ?>
+        <?php get_template_part( 'content', 'none' ); ?>
     </main>
 
 <?php get_footer(); ?>
