@@ -1,0 +1,26 @@
+/*!
+  Theme Name: <theme name>
+  Theme URI: <url>
+  Author: Harold Bradley III
+  Company: <company>
+ */
+
+// Framework Imports
+@import "framework/placeholders";
+@import "framework/functions";
+@import "framework/mixins";
+
+// Base Imports
+@import "base/reset";
+@import "base/colors";
+@import "base/typography";
+
+// Page Layout
+@import "layout/page";
+@import "layout/header";
+@import "layout/main";
+@import "layout/forms";
+@import "layout/footer";
+
+// Modules and components
+@import "modules/main_nav";

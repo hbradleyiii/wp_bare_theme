@@ -1,0 +1,68 @@
+.menu {
+    background-color: $gray_dark;
+    border-bottom: 2px solid $white;
+    border-top: 2px solid $white;
+    height: 54px;
+    padding: 5px 10px;
+    position: relative;
+    z-index: 5;
+    input[type='checkbox'] { @extend %hide; }
+    label[for='menu_toggle'] {
+        display: inline-block;
+        position: relative;
+        width: 40px;
+        vertical-align: middle;
+        z-index: 100;
+        @include hamburger( 40px, $yellow, $white );
+    }
+    input[type='checkbox']:checked ~ .header_nav > .menu {
+        @include transform(translate(0,0));
+    }
+    @media screen and (min-width: $med_page_width) {
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        position: static;
+        input, label:before, .company_info { display: none; }
+    }
+}
+.main_nav {
+    @media screen and (max-width: $med_page_width) { width: 300px; }
+    a {
+        @extend %truncate_long_text;
+        background-color: $black;
+        border-bottom: 1px solid $gray;
+        padding: 12px 30px;
+        position: relative;
+        z-index: 5;
+        &:hover { background-color: $gray_hover; }
+        &:active { margin: 1px -1px -1px 1px; }
+        @media screen and (min-height: ($med_page_height + 100px)) { padding: 20px 30px; }
+        @media screen and (min-height: $max_page_height) { padding: 22px 30px; }
+    }
+    .supermenu {
+        @extend %arrows;
+        position: relative;
+        z-index: 100;
+        &:hover .submenu{
+            display: block;
+        }
+        &:before, &:after { display: none; }
+        @media screen and (min-width: $med_page_width) {
+            &:before, &:after { display: block; }
+        }
+    }
+    .submenu {
+        a {
+            @include prefix(box-shadow, inset 25px 0px 30px -20px rgba(0,0,0,.7));
+            background-color: $gray;
+            border-color: $black;
+            &:last-of-type { border: none; }
+            &:hover { background-color: $gray_hover; }
+        }
+        @media screen and (min-width: $med_page_width) {
+            display: none;
+            @include absolute(top 0 left 100%);
+        }
+    }
+}

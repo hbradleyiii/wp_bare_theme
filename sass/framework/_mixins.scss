@@ -1,0 +1,165 @@
+@mixin size($width, $height: $width) {
+    height: $height;
+    width: $width;
+}
+
+@mixin opacity($opacity) {
+    opacity: $opacity;
+    $opacity-ie: $opacity * 100;
+    filter: alph(opacity = $opacity-ie); //IE8
+}
+
+
+/////////////////////////////////////////////////
+// Transitions
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+@mixin transform($args...) {
+  -webkit-transform: $args;
+  -moz-transform: $args;
+  -ms-transform: $args;
+  -o-transform: $args;
+  transform: $args;
+}
+
+
+/////////////////////////////////////////////////
+// Vendor Prefixing
+// Usage:
+//      @include prefix('box-sizing', 'border-box', moz webkit)
+//      @include prefix('box-sizing', 'border-box')
+@mixin prefix($property, $value, $vendors: webkit moz ms o, $default: true) {
+  @if $vendors {
+    @each $vendor in $vendors {
+      #{"-" + $vendor + "-" + $property}: #{$value};
+    }
+  }
+  @if $default {
+    #{$property}: #{$value};
+  }
+}
+
+
+/////////////////////////////////////////////////
+// Positioning
+// Usage:
+//      @include absolute(top 100% left 0);
+//      @include fixed(top 0 right 0);
+@mixin position($position, $args) {
+  @each $o in top right bottom left {
+    $i: index($args, $o);
+    @if $i and $i + 1 <= length($args) and type-of(nth($args, $i + 1)) == number {
+      #{$o}: nth($args, $i + 1);
+    }
+  }
+  position: $position;
+}
+
+// Positioning helpers
+@mixin absolute($args: '') {
+  @include position(absolute, $args);
+}
+
+@mixin fixed($args: '') {
+  @include position(fixed, $args);
+}
+
+@mixin relative($args: '') {
+  @include position(relative, $args);
+}
+
+
+/////////////////////////////////////////////////
+// Triangles NOT FINISHED...
+// Usage:
+//      @include triangle();
+@mixin triangle() {
+    @include size(0);
+    border-style: solid;
+    content: '';
+    z-index: 2;
+
+        border-width: 0 0 $affiliate_links_height $affiliate_links_height;
+        border-color: transparent transparent $white transparent;
+}
+
+
+/////////////////////////////////////////////////
+// Gradients
+@mixin gradient($start-color, $end-color, $orientation) {
+  background: $start-color;
+  @if $orientation == 'vertical' {
+    background: -webkit-linear-gradient(top, $start-color, $end-color);
+    background: linear-gradient(to bottom, $start-color, $end-color);
+  } @else if $orientation == 'horizontal' {
+    background: -webkit-linear-gradient(left, $start-color, $end-color);
+    background: linear-gradient(to right, $start-color, $end-color);
+  } @else {
+    background: -webkit-radial-gradient(center, ellipse cover, $start-color, $end-color);
+    background: radial-gradient(ellipse at center, $start-color, $end-color);
+  }
+}
+
+
+@mixin social_pics {
+  @each $social in youtube, twitter, facebook, linkedin, google_plus, blogger {
+    .social_#{$social} {
+      background: image-url('#{$social}.jpg') no-repeat center center;
+    }
+  }
+}
+
+
+
+// Media Queries
+// Usage:
+//      @include screen('tablet') {
+//          width: 90%;
+//      }
+// @mixin screen($size) {
+//     $breakpoints: (
+//         desktop: 1024px,
+//         tablet: 768px,
+//         mobile: 767px,
+//         iphone6: 375px,
+//         android: 360px,
+//         iphone: 320px,
+//     );
+//     @if map-has-key($breakpoints, $size) {
+//         @media (min-width: #{inspect(map-get($breakpoints, $size))}) {
+//             @content;
+//         }
+//     }
+//     @else {
+//         @media only screen and (min-width: #{$size}) {
+//             @content;
+//         }
+//     }
+// }
+
+
+@mixin hamburger( $height, $color, $hover_color ){
+    cursor: pointer;
+    height: $height;
+    position: relative;
+    &:before {
+        @include size(100%);
+        @include absolute(left 0 top 50%);
+        content: '';
+        background: linear-gradient(
+            to bottom,
+            $color, $color 20%,
+            transparent 20%, transparent 40%,
+            $color 40%, $color 60%,
+            transparent 60%, transparent 80%,
+            $color 80%, $color 100%
+        );
+        @include transform(translate(0, -50%))
+    }
+}
