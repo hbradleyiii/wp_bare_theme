@@ -4,20 +4,20 @@
 // menu.php - menu functions and custom nav menu walker class
 
 
-add_action('init', function() { 
-    register_nav_menu('navigation-menu');
+add_action('init', function() {
+    register_nav_menu('navigation-menu', 'Main Navigation Menu');
 });
 
 function get_the_nav_menu( $depth = 1 ) {
     if ( has_nav_menu( 'navigation-menu' ) ) {
-        return wp_nav_menu( array( 
+        return wp_nav_menu( array(
             'container'       => false,
             'depth'           => $depth,
             'theme_location'  => 'navigation-menu',
             'items_wrap'      => '%3$s',
             'walker'          => new CO_NavWalker(),
             'echo'            => false,
-        ) ); 
+        ) );
     }
 }
 function the_nav_menu( $depth = 1 ) { echo get_the_nav_menu( $depth ); }
