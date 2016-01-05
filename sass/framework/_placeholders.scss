@@ -24,6 +24,11 @@
 
 .hide{ display: none; }
 
+%justify_blocks {
+    text-align: justify;
+    &:after { content: ''; display: inline-block; width: 100%; }
+}
+
 // Truncate long one-line text with ellipsis
 // Requires an explicit width
 %truncate_long_text {
