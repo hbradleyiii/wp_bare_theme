@@ -12,7 +12,7 @@
 
 //     @each $direction in $directions {
 //         $opposite-direction: map-get($direction-map, $direction);
-//         @if $opposite-direction != null { 
+//         @if $opposite-direction != null {
 //             $opposite-directions: append($opposite-directions, #{$opposite-direction});
 //         } @else {
 //             @warn "No opposite direction can be found for `#{$direction}`.";
@@ -21,3 +21,21 @@
 
 //     @return $opposite-directions;
 // }
+
+@function raise($base, $exponent) {
+    $value: $base;
+
+    @if $exponent > 1 { // positive intergers get multiplied
+        @for $i from 2 through $exponent {
+            $value: $value * $base;
+        }
+    }
+
+    @if $exponent < 1 { // negitive intergers get divided. A number divided by itself is 1
+        @for $i from 0 through -$exponent {
+            $value: $value / $base;
+        }
+    }
+
+    @return ($value);
+}

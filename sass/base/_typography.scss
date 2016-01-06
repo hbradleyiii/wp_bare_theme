@@ -9,15 +9,7 @@ $golden_ratio: (1 + sqrt(5)) / 2;
 $font_ratio: 1.45;
 
 @mixin font-size($size) {
-    @if($size == 1) {
-        font-size: $font_base;
-    } @else if($size == 0) {
-        font-size: 0;
-    } @else if($size <= 0) {
-        font-size: ($font_ratio / abs($size - 1)) * $font_base;
-    } @else {
-        font-size: ($size - 1) * $font_ratio * $font_base;
-    }
+    font-size: raise($font_ratio, $size) * $font_base;
 }
 
 html,
