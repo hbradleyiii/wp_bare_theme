@@ -6,7 +6,7 @@
 ?>
 <article id="post_<?php the_ID(); ?>" <?php post_class(); ?>>
     <header class="page_header">
-        <?php the_title( '<h2><a href="' . esc_url(get_permalink()) . '" rel="bookmark">', '</a></h2>' ); ?>
+        <h2 class="page_title">Search Results for: <?php echo get_search_query(); ?></h2>
     </header>
 
     <div class="page_content">

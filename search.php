@@ -6,12 +6,9 @@
 get_header(); ?>
 
     <main>
-        <header class="page_header">
-            <h1 class="page_title">Search Results for: <?php echo get_search_query(); ?></h1>
-        </header>
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
             <?php get_template_part( 'content', 'search' ); ?>
-        <?php endwhile; 
+        <?php endwhile;
         the_posts_pagination( array(
             'prev_text'          => 'Previous page',
             'next_text'          => 'Next page',
