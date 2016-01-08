@@ -10,7 +10,10 @@
     </header>
 
     <div class="page_content">
-        <?php the_excerpt(); ?>
+        <?php while ( have_posts() ) : the_post();
+            the_title( '<h3 class="title"><a href="' . esc_url(get_permalink()) . '" rel="bookmark">', '</a></h3>' );
+            the_excerpt(); ?>
+        <?php endwhile; ?>
     </div>
 
     <footer class="page_footer">
