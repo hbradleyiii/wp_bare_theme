@@ -43,7 +43,7 @@ add_action('admin_menu', function() {
         'administrator', // Permissions
         'site_settings_page',  // Menu Slug
         function() { // Function used to display these settings ?>
-            <h2>Specific Waste Industries General Website Settings</h2>
+            <h2>General Website Settings</h2>
             <form method="post" action="options.php">
                 <?php settings_fields( 'site_settings' ); ?>
                 <?php do_settings_sections( 'site_settings_page' ); ?>
@@ -60,78 +60,78 @@ add_action('admin_init', function() {
         'co_general_section',
         'General Settings',
         null,
-		'site_settings_page'
+        'site_settings_page'
     );
 
-	add_settings_field(
-		'co_address',
-		'Company Address',
-		'co_display_settings_field',
-		'site_settings_page',
+    add_settings_field(
+        'co_address',
+        'Company Address',
+        'co_display_settings_field',
+        'site_settings_page',
         'co_general_section',
-		array(
-			'description' => 'Street Address',
-			'input_type'  => 'text',
-			'input_name'  => 'co_address',
-			'input_size'  => '50'
-		)
-	);
+        array(
+            'description' => 'Street Address',
+            'input_type'  => 'text',
+            'input_name'  => 'co_address',
+            'input_size'  => '50'
+        )
+    );
 
-	add_settings_field(
-		'co_city',
-		'City',
-		'co_display_settings_field',
-		'site_settings_page',
+    add_settings_field(
+        'co_city',
+        'City',
+        'co_display_settings_field',
+        'site_settings_page',
         'co_general_section',
-		array(
-			'description' => 'City',
-			'input_type'  => 'text',
-			'input_name'  => 'co_city',
-			'input_size'  => '10'
-		)
-	);
+        array(
+            'description' => 'City',
+            'input_type'  => 'text',
+            'input_name'  => 'co_city',
+            'input_size'  => '10'
+        )
+    );
 
-	add_settings_field(
-		'co_state',
-		'State',
-		'co_display_settings_field',
-		'site_settings_page',
+    add_settings_field(
+        'co_state',
+        'State',
+        'co_display_settings_field',
+        'site_settings_page',
         'co_general_section',
-		array(
-			'description' => 'State',
-			'input_type'  => 'text',
-			'input_name'  => 'co_state',
-			'input_size'  => '2'
-		)
-	);
+        array(
+            'description' => 'State',
+            'input_type'  => 'text',
+            'input_name'  => 'co_state',
+            'input_size'  => '2'
+        )
+    );
 
-	add_settings_field(
-		'co_zipcode',
-		'Zipcode',
-		'co_display_settings_field',
-		'site_settings_page',
+    add_settings_field(
+        'co_zipcode',
+        'Zipcode',
+        'co_display_settings_field',
+        'site_settings_page',
         'co_general_section',
-		array(
-			'description' => 'Zipcode',
-			'input_type'  => 'text',
-			'input_name'  => 'co_zipcode',
-			'input_size'  => '5'
-		)
-	);
+        array(
+            'description' => 'Zipcode',
+            'input_type'  => 'text',
+            'input_name'  => 'co_zipcode',
+            'input_size'  => '5'
+        )
+    );
 
-	add_settings_field(
-		'co_phone',
-		'Company Phone Number',
-		'co_display_settings_field',
-		'site_settings_page',
+    add_settings_field(
+        'co_phone',
+        'Company Phone Number',
+        'co_display_settings_field',
+        'site_settings_page',
         'co_general_section',
-		array(
-			'description' => 'The company phone number.',
-			'input_type'  => 'text',
-			'input_name'  => 'co_phone',
-			'input_size'  => '12'
-		)
-	);
+        array(
+            'description' => 'The company phone number.',
+            'input_type'  => 'text',
+            'input_name'  => 'co_phone',
+            'input_size'  => '12'
+        )
+    );
 
     register_setting( 'site_settings', 'co_address' );
     register_setting( 'site_settings', 'co_city' );
@@ -142,13 +142,13 @@ add_action('admin_init', function() {
 
 function co_display_settings_field($args) {
     $value = get_option($args['input_name']);
-    $type = $args['input_type']; 
-    $size = $args['input_size']; 
-    $description = $args['description']; 
+    $type = $args['input_type'];
+    $size = $args['input_size'];
+    $description = $args['description'];
     $id = $name = $args['input_name'];?>
 
-	<input type="<?= $type ?>" name="<?= $name ?>" id="<?= $id ?>" value="<?= $value ?>" size="<?= $size ?>" />
-    <p class="description"><?= $description ?></p><?php 
+    <input type="<?= $type ?>" name="<?= $name ?>" id="<?= $id ?>" value="<?= $value ?>" size="<?= $size ?>" />
+    <p class="description"><?= $description ?></p><?php
 }
 
 ?>
