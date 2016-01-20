@@ -3,7 +3,7 @@
 ////////////////////////////////////////////////////////////
 // functions/breadcrumbs.php - breadcrumbs function
 
-function the_breadcrumbs() { 
+function the_breadcrumbs() {
     global $post; ?>
                 <span class="breadcrumbs">
                     <a href="<?php echo get_site_url(); ?>">Home</a>

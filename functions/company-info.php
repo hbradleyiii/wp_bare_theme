@@ -6,12 +6,12 @@
 
 // get_address()
 //    returns the string for the company address
-function get_address() { 
+function get_address() {
     $address = get_option('co_address');
     $city = get_option('co_city');
     $state = get_option('co_state');
     $zipcode = get_option('co_zipcode');
-    if ( $address != '' ) { 
+    if ( $address != '' ) {
         $address = '
             <address itemscope itemtype="http://schema.org/PostalAddress">
                 <span itemprop="address">
@@ -30,7 +30,7 @@ function the_address() { echo get_address(); }
 
 // get_phone_number()
 //    returns the string for the phone number
-function get_phone_number($full = false) { 
+function get_phone_number($full = false) {
     $phone_number = get_option('co_phone');
     if ( $phone_number != '' ) { $phone_number = '<a href="tel:+1' . $phone_number . '">' . $phone_number . '</a>'; }
     if ( $full ) { $phone_number = '<span class="phone_number" itemprop="telephone">Phone: ' . $phone_number .  '</span>'; }
@@ -49,7 +49,7 @@ function get_company_info() {
             '</span> ' .
             '<span style="display: none;" itemprop="description">' .
                 get_bloginfo('description') .
-            '</span> ' . 
+            '</span> ' .
             get_address() .
             get_phone_number(true) .
             get_fax_number(true) .

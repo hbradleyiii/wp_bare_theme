@@ -21,7 +21,7 @@ add_action( 'init', function() {
             'rewrite' => false,
             'has_archive' => false,
             'supports' => array('title', 'thumbnail'),
-        ) ); 
+        ) );
 });
 
 add_action('wp_footer', function() {
@@ -35,7 +35,7 @@ add_action('wp_footer', function() {
 
 // banner()
 //    returns the string for the homepage banner
-function banner() { 
+function banner() {
     global $wp_query;
 
     $wp_query = new WP_Query( array( 'post_type' => 'banner' ) );

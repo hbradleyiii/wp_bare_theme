@@ -11,7 +11,7 @@ get_header(); ?>
         </header>
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
             <?php get_template_part( 'content', get_post_format() ); ?>
-        <?php endwhile; 
+        <?php endwhile;
         the_posts_pagination( array(
             'prev_text'          => 'Previous page',
             'next_text'          => 'Next page',
