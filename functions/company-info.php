@@ -14,12 +14,12 @@ function get_address() {
     if ( $address != '' ) {
         $address = '
             <address itemscope itemtype="http://schema.org/PostalAddress">
-                <span itemprop="address">
+                <a target="_blank" href="https://www.google.com/maps/place/' . str_replace(" ", "+", $address.$city.$state.$zipcode) . '" itemprop="address">
                     <span itemprop="streetAddress"> ' . $address . ' </span>
                     <span itemprop="addressLocality"> ' . $city . ', </span>
                     <span itemprop="addressRegion"> ' . $state . ' </span>
                     <span itemprop="postalCode"> ' . $zipcode . ' </span>
-                </span>
+                </a>
             </address>
             ';
     }
