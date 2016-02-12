@@ -149,8 +149,8 @@
     height: $height;
     position: relative;
     &:before {
-        @include size(100%);
-        @include absolute(left 0 top 50%);
+        @include size(100%, 60%);
+        @include absolute(left 5px top 50%);
         content: '';
         background: linear-gradient(
             to bottom,
