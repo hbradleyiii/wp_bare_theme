@@ -44,7 +44,7 @@ function banner() {
 
     if ( have_posts()) : while ( have_posts() ) : the_post();
         global $post;
-        $img = get_the_post_thumbnail( $post->ID, 'large' );
+        $img = get_the_post_thumbnail( $post->ID, 'full' );
         $banner .= '<li>' . $img . '<div class="caption">' . get_the_title();
         if (get_field('subtitle')) { $slider .= '<span>' . get_field('subtitle') . '</span>'; }
         $banner .= '</div></li>';
