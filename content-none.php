@@ -1,7 +1,7 @@
 <?php wp_template(__FILE__, false);
 
 ////////////////////////////////////////////////////////////
-// content-search.php - template for displaying results in search pages
+// content-none.php - template for displaying results in none pages
 
 ?>
 <article>
