@@ -43,7 +43,7 @@ function the_phone_number($full = false) { echo get_phone_number($full); }
 //    returns the string with the formatted company info
 function get_company_info() {
     return '
-        <span class="company_info" itemscope itemtype="http://schema.org/LocalBusiness">
+        <div class="company_info" itemscope itemtype="http://schema.org/LocalBusiness">
             <span style="display: none;" itemprop="name">' .
                 get_bloginfo('name') .
             '</span> ' .
@@ -54,7 +54,7 @@ function get_company_info() {
             get_phone_number(true) .
             get_fax_number(true) .
             '
-        </span>';
+        </div>';
 }
 function the_company_info() { echo get_company_info(); }
 
