@@ -24,7 +24,6 @@ add_action('wp_enqueue_scripts', function() {
 
     // Scripts
     wp_enqueue_script('scripts', $template_dir_uri.'/scripts.js', array('jquery'), false, true);
-    wp_enqueue_script('contact-form', $template_dir_uri.'/contact-form.js', array('jquery'), false, true);
 
     // Styles
     wp_enqueue_style( 'theme_style', get_stylesheet_uri() );
@@ -47,11 +46,6 @@ add_action( 'after_setup_theme', function() {
         'aside', 'image', 'video', 'quote', 'link', 'gallery', 'status', 'audio', 'chat'
     ) );
 });
-
-// When ContactForm 7 is initialized, enqueue contact_form script in footer
-add_action( 'wpcf7_enqueue_scripts', function() {
-    wp_enqueue_script('contact-form', get_template_directory_uri().'/contact-form.js', false, false, true);
-} );
 
 // Replace excerpt ellipse with 'Read more...' link
 add_filter('excerpt_more', function( $text ) { return str_replace('[&hellip;]', ' [<a href="'.get_permalink().'">Read more...</a>]', $text); });
