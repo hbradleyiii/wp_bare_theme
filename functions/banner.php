@@ -50,7 +50,7 @@ function banner() {
         $banner .= '</div></li>';
     endwhile; endif; wp_reset_query();
 
-    $banner .= '</div>';
+    $banner .= '</ul></div>';
 
     return $banner;
 }
