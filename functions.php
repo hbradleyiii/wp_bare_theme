@@ -23,7 +23,8 @@ add_action('wp_enqueue_scripts', function() {
     $template_dir_uri = get_template_directory_uri();
 
     // Scripts
-    wp_enqueue_script('scripts', $template_dir_uri.'/scripts.js', array('jquery'), false, true);
+    wp_enqueue_script('scripts', $template_dir_uri.'/js/scripts.js', array('jquery'), false, false);
+    wp_enqueue_script('scripts', $template_dir_uri.'/js/smoothscroll.js', array('jquery'), false, false);
 
     // Styles
     wp_enqueue_style( 'theme_style', get_stylesheet_uri() );
