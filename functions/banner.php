@@ -27,7 +27,7 @@ add_action( 'init', function() {
 add_action('wp_footer', function() {
     global $number_of_images;
     if(is_front_page() && $number_of_images > 1) { ?>
-        <script type="text/javascript" charset="utf-8">
+        <script type="text/javascript">
             hbPictureFader.init(6000);
         </script>
     <?php }
