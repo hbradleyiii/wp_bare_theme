@@ -1,27 +1,4 @@
-// Why is this not working?
-// @function opposite-direction($directions) {
-//     $opposite-directions: ();
-//     $direction-map: (
-//         'top': 'bottom',
-//         'right': 'left',
-//         'bottom': 'top',
-//         'left': 'right',
-//         'ltr': 'rtl',
-//         'rtl': 'ltr'
-//     );
-
-//     @each $direction in $directions {
-//         $opposite-direction: map-get($direction-map, $direction);
-//         @if $opposite-direction != null {
-//             $opposite-directions: append($opposite-directions, #{$opposite-direction});
-//         } @else {
-//             @warn "No opposite direction can be found for `#{$direction}`.";
-//         }
-//     }
-
-//     @return $opposite-directions;
-// }
-
+// This does not work for decimals. see: https://css-tricks.com/snippets/sass/power-function/
 @function raise($base, $exponent) {
     $value: $base;
 
