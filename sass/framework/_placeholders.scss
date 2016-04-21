@@ -9,33 +9,20 @@
   }
 }
 
-%center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
+%center { display: block; margin-left: auto; margin-right: auto; }
 
-%hide_text {
-    overflow: hidden;
-    text-indent: 100%;
-    white-space: nowrap;
-}
+%hide_text { overflow: hidden; text-indent: 100%; white-space: nowrap; }
+
 %hide { display: none; }
-
-.hide{ display: none; }
+.hide { display: none; }
 
 %justify_blocks {
     text-align: justify;
     &:after { content: ''; display: inline-block; width: 100%; }
 }
 
-// Truncate long one-line text with ellipsis
-// Requires an explicit width
-%truncate_long_text {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
+// Truncate long one-line text with ellipsis (requires an explicit width)
+%truncate_long_text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 %flip {
     -moz-transform: scaleX(-1);
@@ -45,3 +32,4 @@
     filter: FlipH;
     -ms-filter: "FlipH";
 }
+
