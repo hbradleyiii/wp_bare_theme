@@ -4,4 +4,3 @@
 // Sidebar - displays page sidebar
 
 ?>
-
