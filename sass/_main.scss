@@ -14,3 +14,10 @@ strong { font-weight: $font_bold; }
 
 h1 { @include font-size(3); font-weight: $font_bold; }
 h2 { @include font-size(2); font-weight: $font_bold; }
+
+img.alignright { float: right; margin: 0 0 1em 1em; }
+img.alignleft { float: left; margin: 0 1em 1em 0; }
+img.aligncenter { display: block; margin-left: auto; margin-right: auto; }
+.alignright { float: right; }
+.alignleft { float: left; }
+.aligncenter { display: block; margin-left: auto; margin-right: auto; }
