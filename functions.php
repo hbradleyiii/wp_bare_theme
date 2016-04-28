@@ -71,6 +71,18 @@ add_action( 'wp_head', function() {
     echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n";
 }, 0);
 
+// wp_indent()
+//      indents output from a function with $indent_level number of indents.
+function wp_indent($function, $indent_level = 1) {
+    $indent = "    ";
+    ob_start();
+    $function();
+    $contents = ob_get_contents();
+    ob_end_clean();
+    echo preg_replace("/\n/", "\n" . $indent, substr($contents, 0, -1));
+    echo "\n";
+}
+
 // wp_template()
 //      default setup for wordpress php template files
 function wp_template($file, $debug_in_header = false) {
