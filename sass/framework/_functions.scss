@@ -16,3 +16,10 @@
 
     @return ($value);
 }
+
+
+@mixin font-size($size) {
+    font-size: raise($font_ratio, $size) * $font_base;
+}
+
+$golden_ratio: (1 + sqrt(5)) / 2; // 1.61803398874989 or "The Golden Ratio"

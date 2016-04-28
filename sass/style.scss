@@ -5,20 +5,33 @@
   Company: <company>
  */
 
+// Import Bootstrap
+
 // Import Framework
 @import "framework/placeholders";
 @import "framework/functions";
 @import "framework/mixins";
 
-// Import Base Styles
-@import "base/reset";
-@import "base/colors";
-@import "base/typography";
+// Style Colors
+$color_primary: #000;
+$color_secondary: #fff;
+
+// Typography
+$font_base: 16px;
+$font_family: sans-serif;
+$font_normal: 400;
+$font_light: 300;
+$font_bold: 700;
+$font_ratio: 1.45;
+
+// Screen Sizes
+$width_desktop: 1200px;
+$width_tablet: 800px;
+$width_mobile: 500px;
 
 // Import Site Styles
-@import "page";
-@import "header";
 @import "main";
-@import "forms";
-@import "footer";
+@import "header";
 @import "main_nav";
+@import "footer";
+@import "forms";

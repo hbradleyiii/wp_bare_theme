@@ -1,0 +1,16 @@
+html,
+body {
+    color: $black;
+    font-family: $font_family;
+    font-size: $font_base;
+    font-weight: $font_normal;
+    line-height: 1.45;
+}
+
+a { color: $blue; text-decoration: none; }
+a:hover { color: $blue_hover; }
+
+strong { font-weight: $font_bold; }
+
+h1 { @include font-size(3); font-weight: $font_bold; }
+h2 { @include font-size(2); font-weight: $font_bold; }
