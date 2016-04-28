@@ -17,6 +17,12 @@ add_action( 'edit_form_after_editor', function($post) {
     }
 });
 
+// Hide Comments and Posts menu items
+add_action( 'admin_menu', function() {
+    /* remove_menu_page('edit-comments.php'); */
+    /* remove_menu_page('edit.php'); */
+});
+
 // Customize tinymce
 add_filter('tiny_mce_before_init', function($init) {
     $init['block_formats'] = 'Paragraph =p;Header 2=h2;Header 3=h3;Header 4=h4';
