@@ -5,15 +5,6 @@
   Company: <company>
  */
 
-// Import Bootstrap
-$icon-font-path: "fonts/bootstrap/";
-@import "bootstrap";
-
-// Import Framework
-@import "framework/placeholders";
-@import "framework/functions";
-@import "framework/mixins";
-
 // Style Colors
 $color_primary: #000;
 $color_secondary: #fff;
@@ -31,6 +22,17 @@ $font_ratio: 1.45;
 $width_desktop: 1200px;
 $width_tablet: 800px;
 $width_mobile: 500px;
+
+// Bootstrap Variables
+$icon-font-path: "fonts/bootstrap/";
+
+// Import Bootstrap
+@import "bootstrap";
+
+// Import Framework
+@import "framework/placeholders";
+@import "framework/functions";
+@import "framework/mixins";
 
 // Import Site Styles
 @import "main";
