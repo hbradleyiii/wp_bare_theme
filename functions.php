@@ -23,6 +23,11 @@ add_action('wp_enqueue_scripts', function() {
     $template_dir_uri = get_template_directory_uri();
 
     // Scripts
+    if ( WP_DEBUG ) {
+        wp_enqueue_script('scripts', $template_dir_uri.'/js/bootstrap.js', array(), false, false);
+    } else {
+        wp_enqueue_script('scripts', $template_dir_uri.'/js/bootstrap.min.js', array(), false, false);
+    }
     wp_enqueue_script('scripts', $template_dir_uri.'/js/scripts.js', array('jquery'), false, false);
     wp_enqueue_script('scripts', $template_dir_uri.'/js/smoothscroll.js', array('jquery'), false, false);
 
