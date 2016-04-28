@@ -5,22 +5,20 @@
   Company: <company>
  */
 
-// Framework Imports
+// Import Framework
 @import "framework/placeholders";
 @import "framework/functions";
 @import "framework/mixins";
 
-// Base Imports
+// Import Base Styles
 @import "base/reset";
 @import "base/colors";
 @import "base/typography";
 
-// Page Layout
-@import "layout/page";
-@import "layout/header";
-@import "layout/main";
-@import "layout/forms";
-@import "layout/footer";
-
-// Modules and components
-@import "modules/main_nav";
+// Import Site Styles
+@import "page";
+@import "header";
+@import "main";
+@import "forms";
+@import "footer";
+@import "main_nav";
