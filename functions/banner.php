@@ -20,7 +20,7 @@ add_action( 'init', function() {
             'menu_icon' => 'dashicons-images-alt2',
             'rewrite' => false,
             'has_archive' => false,
-            'supports' => array('title', 'thumbnail'),
+            'supports' => array('title', 'thumbnail', 'revisions'),
         ) );
 });
 
