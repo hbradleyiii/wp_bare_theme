@@ -24,15 +24,6 @@ add_action( 'init', function() {
         ) );
 });
 
-add_action('wp_footer', function() {
-    global $number_of_images;
-    if(is_front_page() && $number_of_images > 1) { ?>
-        <script type="text/javascript">
-            hbPictureFader.init(6000);
-        </script>
-    <?php }
-}, 90);
-
 // banner()
 //    returns the string for the homepage banner
 function banner() {
@@ -40,21 +31,54 @@ function banner() {
 
     $wp_query = new WP_Query( array( 'post_type' => 'banner' ) );
 
-    $banner = '<div class="flexslider bannerslider"><ul class="slides">';
+    $indicators = '';
+    $slides = '';
+    $i = 0;
 
     if ( have_posts()) : while ( have_posts() ) : the_post();
         global $post;
+
         $img = get_the_post_thumbnail( $post->ID, 'full' );
-        $banner .= '<li>' . $img . '<div class="caption">' . get_the_title();
-        if (get_field('subtitle')) { $slider .= '<span>' . get_field('subtitle') . '</span>'; }
-        $banner .= '</div></li>';
-    endwhile; endif; wp_reset_query();
+        $class = ($i == 0 ? 'active' : '');
 
-    $banner .= '</ul></div>';
+        $url = get_field( 'banner_link' );
 
-    return $banner;
+        $slide = '
+                <li class="item '.$class.'">
+                    <h3 class="carousel-caption"><a href="' . $url . '">' . get_the_title() . '</a></h3>
+                    ' . $img . '
+                </li>
+            ';
+
+        $slides .= $slide;
+
+        $indicators .= '                 <li data-target="#main_banner" data-slide-to="' . $i . '" class="' . $class . '"></li>' . "\n";
+
+        $i++;
+    endwhile; else: return ''; endif; wp_reset_query();
+
+    return '
+        <div id="main_banner" class="carousel slide" data-ride="carousel">
+            <!-- Slides -->
+            <ul class="carousel-inner" role="listbox">
+                ' . $slides . '
+            </ul>
+
+            <!-- Indicators -->
+            <ul class="carousel-indicators">' . "\n" .  $indicators . '            </ul>
+
+            <!-- Prev/Next Controls -->
+            <a class="left carousel-control" href="#main_banner" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#main_banner" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        ';
 }
-
 add_shortcode('banner', 'insert_banner');
 function insert_banner() { return banner(); }
 function the_banner() { echo banner(); }
