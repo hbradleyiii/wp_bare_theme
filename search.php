@@ -4,7 +4,6 @@
 // search.php - default search display
 
 get_header(); ?>
-
     <main>
         <?php if ( have_posts() ) :
             get_template_part( 'content', 'search' );
@@ -16,6 +15,6 @@ get_header(); ?>
         else : // No content found
             get_template_part( 'content', 'none' );
         endif; ?>
-    </main>
+    </main><?php
 
-<?php get_footer(); ?>
+get_footer(); ?>

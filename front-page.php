@@ -4,8 +4,8 @@
 // front-page.php - default home page
 
 get_header(); ?>
-
     <main>
-    </main>
 
-<?php get_footer(); ?>
+    </main><?php
+
+get_footer(); ?>

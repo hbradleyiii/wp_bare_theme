@@ -4,9 +4,8 @@
 // 404 - page not found template
 
 get_header(); ?>
-
     <main>
         <?php get_template_part( 'content', 'none' ); ?>
-    </main>
+    </main><?php
 
-<?php get_footer(); ?>
+get_footer(); ?>

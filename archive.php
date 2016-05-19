@@ -4,7 +4,6 @@
 // archive.php - default archive template
 
 get_header(); ?>
-
     <main>
         <header class="page_header">
             <?php the_archive_title( '<h1 class="page_title">', '</h1>' ); ?>
@@ -20,6 +19,6 @@ get_header(); ?>
         else : // No content found
             get_template_part( 'content', 'none' );
         endif; ?>
-    </main>
+    </main><?php
 
-<?php get_footer(); ?>
+get_footer(); ?>

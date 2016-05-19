@@ -4,12 +4,11 @@
 // page.php - default page template
 
 get_header(); ?>
-
     <main>
         <?php the_breadcrumbs(); ?>
         <?php while ( have_posts() ) : the_post(); ?>
             <?php get_template_part( 'content', 'page' ); ?>
         <?php endwhile; ?>
-    </main>
+    </main><?php
 
-<?php get_footer(); ?>
+get_footer(); ?>
