@@ -1,6 +1,6 @@
 <?php wp_template(__FILE__);
 
 ////////////////////////////////////////////////////////////
-// Sidebar - displays page sidebar
+// sidebar.php - displays page sidebar
 
 ?>

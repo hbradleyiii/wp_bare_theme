@@ -1,1 +1,6 @@
+<?php wp_template(__FILE__);
 
+////////////////////////////////////////////////////////////
+// author-bio.php - displays author bio
+
+?>
