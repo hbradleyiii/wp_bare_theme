@@ -108,4 +108,47 @@ function wp_template($file, $debug_in_header = false) {
     }
 }
 
+// Auto-reloading code.
+// Using site-watch bash script for updating site-watch file.
+// Note that XDEBUG_SESSION cookie must be set for this to work!
+if ( WP_DEBUG && isset($_COOKIE['XDEBUG_SESSION']) ) { add_action( 'wp_footer', function() { ?>
+    <script type='text/javascript'>
+        jQuery( function ($) {
+            var last_update = 0;
+            var start_time = Date.now();
+
+            function init( response ) {
+                last_update = get_update_time( response );
+                process = process_watch;
+                process_watch ( response );
+                console.log( 'Watching for updates...' );
+            }
+
+            function process_watch( response ) {
+                if ( last_update < get_update_time( response ) ) {
+                    console.log( 'Reloading to updated page...' );
+                    location.reload();
+                } else if ( Date.now() < start_time + 3600000 ) {
+                    setTimeout( check_watch, 800 );
+                }
+            }
+
+            function check_watch() {
+                $.ajax({
+                    url: '<?php echo get_template_directory_uri() . '/.site-watch'; ?>',
+                    success: process,
+                    error: function () { console.warn( 'Site Watch is not running! Set up site-watch on server and reload the page.' ); }
+                });
+            }
+
+            function get_update_time( response ) {
+                return parseInt( response.split( '\n' ) );
+            }
+
+            var process = init;
+            check_watch();
+        });
+    </script>
+<?php }); }
+
 ?>
