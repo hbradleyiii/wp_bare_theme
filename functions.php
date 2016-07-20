@@ -130,6 +130,9 @@ if ( WP_DEBUG && isset($_COOKIE['XDEBUG_SESSION']) ) { add_action( 'wp_footer', 
                     location.reload();
                 } else if ( Date.now() < start_time + 3600000 ) {
                     setTimeout( check_watch, 800 );
+                } else {
+                    console.warn( 'No changes for over an hour. No longer watching.' )
+                    console.warn( 'Please refresh the page to continue watching for changes.' )
                 }
             }
 
