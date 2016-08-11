@@ -1,4 +1,4 @@
-<?php wp_template(__FILE__);
+<?php wp_theme_debug(__FILE__);
 
 ////////////////////////////////////////////////////////////
 // Footer - displays page footer

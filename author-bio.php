@@ -1,4 +1,4 @@
-<?php wp_template(__FILE__);
+<?php wp_theme_debug(__FILE__);
 
 ////////////////////////////////////////////////////////////
 // author-bio.php - displays author bio

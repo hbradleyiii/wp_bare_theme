@@ -1,4 +1,4 @@
-<?php wp_template(__FILE__, true);
+<?php wp_theme_debug(__FILE__, true);
 
 ////////////////////////////////////////////////////////////
 // single.php - default single post template

@@ -1,4 +1,4 @@
-<?php wp_template(__FILE__, false);
+<?php wp_theme_debug(__FILE__, false);
 
 ////////////////////////////////////////////////////////////
 // content-page.php - template for displaying content of pages
