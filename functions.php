@@ -1,4 +1,4 @@
-<?php if ( ! defined( 'ABSPATH' ) ) { header('Location: /error-404-page-not-found'); die(); } wp_theme_debug(__FILE__, true);
+<?php if ( ! defined( 'ABSPATH' ) ) { header('Location: /error-404-page-not-found'); die(); } wp_theme_debug(__FILE__, $output_to_header = true);
 
 ////////////////////////////////////////////////////////////
 // functions.php - functions and customizations for theme
@@ -85,14 +85,14 @@ function wp_indent($function, $indent_level = 1) {
 
 // wp_theme_debug()
 //      theme debugging function for echoing helpful debug info.
-function wp_theme_debug($file, $debug_in_header = false) {
+function wp_theme_debug($file, $output_to_header = false) {
     if ( WP_DEBUG ) {
         $filestamp = function() use ($file) {
                 date_default_timezone_set( 'America/Louisville' );
                 echo "\n<!-- [" . date( 'H:i:s T' ) . '] [' . timer_stop() . ' seconds] [' .
                     get_num_queries() . ' queries] Called file: "' . $file . '" -->' . "\n\n";
             };
-        if ( $debug_in_header ) {
+        if ( $output_to_header ) {
             // Print the template filename in the header
             add_action('wp_head', $filestamp);
         } else { // or just echo it out where ever it is called

@@ -1,4 +1,4 @@
-<?php wp_theme_debug(__FILE__, false);
+<?php wp_theme_debug(__FILE__);
 
 ////////////////////////////////////////////////////////////
 // content.php - default template for displaying content

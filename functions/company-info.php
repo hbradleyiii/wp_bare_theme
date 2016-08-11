@@ -1,4 +1,4 @@
-<?php wp_theme_debug(__FILE__, true);
+<?php wp_theme_debug(__FILE__, $output_to_header = true);
 
 ////////////////////////////////////////////////////////////
 // functions/company-info.php - functions for displaying company info

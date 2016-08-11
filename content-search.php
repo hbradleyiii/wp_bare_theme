@@ -1,4 +1,4 @@
-<?php wp_theme_debug(__FILE__, false);
+<?php wp_theme_debug(__FILE__);
 
 ////////////////////////////////////////////////////////////
 // content-search.php - template for displaying results in search pages

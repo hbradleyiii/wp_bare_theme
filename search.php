@@ -1,4 +1,4 @@
-<?php wp_theme_debug(__FILE__, true);
+<?php wp_theme_debug(__FILE__, $output_to_header = true);
 
 ////////////////////////////////////////////////////////////
 // search.php - default search display
