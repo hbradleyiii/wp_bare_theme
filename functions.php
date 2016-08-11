@@ -1,4 +1,4 @@
-<?php wp_template(__FILE__, true);
+<?php if ( ! defined( 'ABSPATH' ) ) { header('Location: /error-404-page-not-found'); die(); } wp_template(__FILE__, true);
 
 ////////////////////////////////////////////////////////////
 // functions.php - functions and customizations for theme
@@ -86,13 +86,6 @@ function wp_indent($function, $indent_level = 1) {
 // wp_template()
 //      default setup for wordpress php template files
 function wp_template($file, $debug_in_header = false) {
-    // When file is called directly, immediately redirect to a 404 page
-    if ( ! defined( 'ABSPATH' ) ) {
-        header('Location: /error-404-page-not-found');
-        die();
-    }
-
-    // Debugging
     if ( WP_DEBUG ) {
         $filestamp = function() use ($file) {
                 date_default_timezone_set( 'America/Louisville' );
