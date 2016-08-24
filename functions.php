@@ -148,6 +148,7 @@ if ( debug_session() ) {
                         url: '<?php echo get_template_directory_uri() . '/.site-watch'; ?>',
                         success: process,
                         error: function () { console.warn( 'Site Watch is not running! Set up site-watch on server and reload the page.' ); }
+                        cache: false,
                     });
                 }
 
