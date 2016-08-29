@@ -156,5 +156,3 @@ function co_display_settings_field($args) {
     <input type="<?= $type ?>" name="<?= $name ?>" id="<?= $id ?>" value="<?= $value ?>" size="<?= $size ?>" />
     <p class="description"><?= $description ?></p><?php
 }
-
-?>

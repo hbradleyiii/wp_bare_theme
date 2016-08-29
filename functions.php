@@ -163,5 +163,3 @@ if ( debug_session() ) {
     <?php });
 }
 
-
-?>

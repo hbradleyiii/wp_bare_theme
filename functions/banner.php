@@ -82,5 +82,3 @@ function banner() {
 add_shortcode('banner', 'insert_banner');
 function insert_banner() { return banner(); }
 function the_banner() { echo banner(); }
-
-?>

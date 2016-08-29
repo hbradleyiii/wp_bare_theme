@@ -82,5 +82,3 @@ class CO_NavWalker extends Walker_Nav_Menu {
     // Not Used
     function end_el( &$output, $item, $depth = 0, $args = array() ) { }
 }
-
-?>

@@ -19,5 +19,3 @@ add_filter('login_redirect', function( $redirect_to, $request, $user ) {
     }
     return $redirect_to;
 }, 10, 3);
-
-?>

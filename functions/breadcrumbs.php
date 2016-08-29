@@ -17,4 +17,4 @@ function the_breadcrumbs() {
                     <?php endif; ?>
                     <span><?php the_title(); ?></span>
                 </span>
-<?php } ?>
+<?php }

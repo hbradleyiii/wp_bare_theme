@@ -65,5 +65,3 @@ function get_the_logo($image) {
     return '<a href="' . get_site_url() . '" class="logo"><img src="' . get_template_directory_uri() . $image . '" alt="' . get_bloginfo('description') . '"></a>';
 }
 function the_logo($image) { echo get_the_logo($image); }
-
-?>

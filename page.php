@@ -11,4 +11,4 @@ get_header(); ?>
         <?php endwhile; ?>
     </main><?php
 
-get_footer(); ?>
+get_footer();

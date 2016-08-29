@@ -37,5 +37,3 @@ add_action( 'customize_register', function($wp_customize) {
     );
     wp_add_settings_and_controls( $wp_customize, 'social_media', $controls, 'url' );
 });
-
-?>
