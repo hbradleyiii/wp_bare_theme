@@ -85,6 +85,9 @@ function wp_indent($function, $indent_level = 1) {
     echo "\n";
 }
 
+// Turn off system.multicall for security
+add_filter( 'xmlrpc_methods', function( $methods ) { unset( $methods['system.multicall'] ); return $methods; });
+
 // wp_theme_debug()
 //      theme debugging function for echoing helpful debug info.
 function wp_theme_debug($file, $output_to_header = false) {
@@ -162,4 +165,3 @@ if ( debug_session() ) {
         </script>
     <?php });
 }
-
