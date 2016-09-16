@@ -5,15 +5,15 @@
 
 ?>
 <article>
-    <header class="page_header">
+    <header class="page-header">
         <?php if ( is_search() ) : ?>
-            <h1 class="page_title">No Results found for: <?php echo get_search_query(); ?></h2>
+            <h1 class="page-title">No Results found for: <?php echo get_search_query(); ?></h2>
         <?php else : ?>
-            <h1 class="page_title">Not Found<h1>
+            <h1 class="page-title">Not Found<h1>
         <?php endif; ?>
     </header>
 
-    <div class="page_content">
+    <div class="page-content">
         <?php if ( is_search() ) : ?>
             <p>Sorry, but nothing matched your search terms. Please try again with some different keywords.</p>
         <?php else : ?>
