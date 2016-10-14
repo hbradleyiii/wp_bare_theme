@@ -18,6 +18,9 @@ $font_light: 300;
 $font_bold: 700;
 $font_ratio: 1.45;
 
+$font_sizes: 0.512rem, 0.64rem, 0.8rem, 1rem, 1.25rem, 1.563rem, 1.953rem, 2.441rem, 3.051rem, 3.814rem;
+@mixin font-size($size) { font-size: nth($font_sizes, $size + 4); }
+
 // Screen Sizes
 $width_desktop: 1200px;
 $width_tablet: 800px;
