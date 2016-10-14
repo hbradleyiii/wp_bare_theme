@@ -9,9 +9,6 @@
     filter: alph(opacity = $opacity-ie); //IE8
 }
 
-
-/////////////////////////////////////////////////
-// Transitions
 @mixin transition($args...) {
   -webkit-transition: $args;
   -moz-transition: $args;
@@ -73,82 +70,6 @@
 @mixin relative($args: '') {
   @include position(relative, $args);
 }
-
-
-/////////////////////////////////////////////////
-// Triangles NOT FINISHED...
-// Usage:
-//      @include triangle();
-@mixin triangle() {
-    @include size(0);
-    border-style: solid;
-    content: '';
-    z-index: 2;
-
-        border-width: 0 0 $affiliate_links_height $affiliate_links_height;
-        border-color: transparent transparent $white transparent;
-}
-
-
-/////////////////////////////////////////////////
-// Gradients
-@mixin gradient($start-color, $end-color, $orientation) {
-  background: $start-color;
-  @if $orientation == 'vertical' {
-    background: -webkit-linear-gradient(top, $start-color, $end-color);
-    background: linear-gradient(to bottom, $start-color, $end-color);
-  } @else if $orientation == 'horizontal' {
-    background: -webkit-linear-gradient(left, $start-color, $end-color);
-    background: linear-gradient(to right, $start-color, $end-color);
-  } @else {
-    background: -webkit-radial-gradient(center, ellipse cover, $start-color, $end-color);
-    background: radial-gradient(ellipse at center, $start-color, $end-color);
-  }
-}
-
-
-@mixin social_pics {
-  @each $social in youtube, twitter, facebook, linkedin, google_plus, blogger {
-    .social_#{$social} {
-      background: image-url('#{$social}.jpg') no-repeat center center;
-    }
-  }
-}
-
-
-
-// Media Queries
-// Usage:
-//      @include screen('tablet') {
-//          width: 90%;
-//      }
-// @mixin screen($size) {
-//     $breakpoints: (
-//         desktop: 1024px,
-//         tablet: 768px,
-//         mobile: 767px,
-//         iphone6: 375px,
-//         android: 360px,
-//         iphone: 320px,
-//     );
-//     @if map-has-key($breakpoints, $size) {
-//         @media (min-width: #{inspect(map-get($breakpoints, $size))}) {
-//             @content;
-//         }
-//     }
-//     @else {
-//         @media only screen and (min-width: #{$size}) {
-//             @content;
-//         }
-//     }
-// }
-
-@mixin media($width) {
-    @media only screen and (min-width: $width) {
-        @content;
-    }
-}
-
 
 
 @mixin hamburger( $height, $color, $hover_color ){
