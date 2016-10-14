@@ -1,7 +1,11 @@
 <?php if ( ! defined( 'ABSPATH' ) ) { header('Location: /error-404-page-not-found'); die(); } wp_theme_debug(__FILE__, $output_to_header = true);
 
-////////////////////////////////////////////////////////////
-// functions.php - functions and customizations for theme
+/**
+ * General Wordpress Functions
+ *
+ * @author     Harold Bradley III <hbradleyiii@gmail.com>
+ * @license    MIT
+ */
 
 
 $template_dir = get_template_directory();
@@ -13,11 +17,19 @@ require_once($template_dir . '/functions/company-info.php');
 require_once($template_dir . '/functions/login.php');
 require_once($template_dir . '/functions/menu.php');
 
-if ( WP_DEBUG ) { require_once($template_dir . '/functions/debug.php'); }
+/**
+ * Only include debug files if WP_DEBUG is set (and debug.php exists)
+ */
+if ( WP_DEBUG ) {
+    if ( file_exists($template_dir . '/functions/debug.php') ) {
+        require_once($template_dir . '/functions/debug.php');
+    }
+}
 
 
-////////////////////////////////////////////////////////////
-// Scripts and Style Sheets
+/**
+ * Enqueue Scripts and Style Sheets
+ */
 add_action('wp_enqueue_scripts', function() {
 
     global $wp_styles;
@@ -47,6 +59,10 @@ add_action('wp_enqueue_scripts', function() {
 
 }, 99);
 
+
+/**
+ * Setup Theme
+ */
 add_action( 'after_setup_theme', function() {
     add_theme_support( 'post-thumbnails' );
     add_theme_support( 'title-tag' );
@@ -59,22 +75,66 @@ add_action( 'after_setup_theme', function() {
     ) );
 });
 
-// Replace excerpt ellipse with 'Read more...' link
-add_filter('excerpt_more', function( $text ) { return str_replace('[&hellip;]', ' [<a href="'.get_permalink().'">Read more...</a>]', $text); });
 
-// Wordpress Optimizations
+/**
+ * General WordPress Opimization and Security
+ */
 remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 remove_action( 'wp_print_styles', 'print_emoji_styles' );
-remove_action( 'wp_head', 'wp_generator' );
+remove_action( 'wp_head', 'wp_generator' );  // Hide version info for security
 remove_action( 'wp_head', 'wlwmanifest_link' );
 remove_action( 'wp_head', 'rsd_link' );
 
+
+/**
+ * Script to replace 'no-js' class so stylesheet is aware that scripts can run
+ */
 add_action( 'wp_head', function() {
     echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n";
 }, 0);
 
-// wp_indent()
-//      indents output from a function with $indent_level number of indents.
+
+/**
+ * Replace excerpt ellipses with 'Read more...' link
+ */
+add_filter('excerpt_more', function( $text ) {
+    return str_replace('[&hellip;]', ' [<a href="'.get_permalink().'">Read more...</a>]', $text);
+});
+
+
+/**
+ * This function gives a convenient way to keep the ugly loop functions from the template.
+ *
+ * @param WP_Query $wp_query  - a WP_Query instance
+ * @param function $function  - a function to run as a closure
+ *
+ * @return array - an array of the results of the function (can be null)
+ */
+function wp_loop($wp_query, $function) {
+
+    $result = array();
+
+    if ( $wp_query->have_posts() ) {
+        while ( $wp_query->have_posts() ) {
+            $wp_query->the_post();
+            $result[] = $function($wp_query);
+        }
+    }
+    wp_reset_postdata();
+
+    return $result;
+}
+
+
+/**
+ * Indents the output from a closure (function) with $indent_level
+ * number of indents.
+ *
+ * @param function $function - a closure to be called
+ * @param int $indent_level
+ *
+ * @return null
+ */
 function wp_indent($function, $indent_level = 1) {
     $indent = "    ";
     ob_start();
@@ -85,11 +145,24 @@ function wp_indent($function, $indent_level = 1) {
     echo "\n";
 }
 
-// Turn off system.multicall for security
-add_filter( 'xmlrpc_methods', function( $methods ) { unset( $methods['system.multicall'] ); return $methods; });
 
-// wp_theme_debug()
-//      theme debugging function for echoing helpful debug info.
+/**
+ * Turn off system.multicall for security
+ */
+add_filter( 'xmlrpc_methods', function( $methods ) {
+    unset( $methods['system.multicall'] );
+    return $methods;
+});
+
+
+/**
+ * Theme debugging function for outputing theme file names and sql information.
+ *
+ * @param string $file - the name of the file as a string
+ * @param bool $output_to_header - whether or not to output in header (true) or in place (false)
+ *
+ * @return null
+ */
 function wp_theme_debug($file, $output_to_header = false) {
     if ( WP_DEBUG ) {
         $filestamp = function() use ($file) {
@@ -106,20 +179,31 @@ function wp_theme_debug($file, $output_to_header = false) {
     }
 }
 
-// debug_session()
-//      returns true if current session is a debug session.
-//      This is useful to wrap debug code, particularly on a live site.
-//      Example:
-//          if (debug_session()) { ... } // Is run only if cookie is set
-//              -or-
-//          if (debug_session(WP_DEBUG)) { ... } // Is run if cookie or debug is set
+
+/**
+ * Function for wrapping debug code
+ *
+ * This is particularly helpful on a live site.
+ *      Example:
+ *          if (debug_session()) { ... } // Is run only if cookie is set
+ *              -or-
+ *          if (debug_session(WP_DEBUG)) { ... } // Is run if cookie or debug is set
+ *
+ * @param bool $include_wp_debug - whether or not to use wp_debug in check
+ *
+ * @return bool - returns true if current session is a debug session
+ */
 function debug_session($include_wp_debug = false) {
     return ($include_wp_debug ?  WP_DEBUG || isset($_COOKIE['XDEBUG_SESSION']) : isset($_COOKIE['XDEBUG_SESSION']));
 }
 
-// Auto-reloading code.
-// Using site-watch bash script for updating site-watch file.
-// Note that XDEBUG_SESSION cookie must be set for this to work!
+
+/**
+ * Auto-reloading code for development.
+ *
+ * Using site-watch bash script for updating site-watch file.
+ * Note that XDEBUG_SESSION cookie must be set for this to work!
+ */
 if ( debug_session() ) {
     add_action( 'wp_footer', function() { ?>
         <script type='text/javascript'>
