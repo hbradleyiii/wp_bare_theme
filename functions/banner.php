@@ -1,9 +1,13 @@
 <?php wp_theme_debug(__FILE__, $output_to_header = true);
 
-////////////////////////////////////////////////////////////
-// banner.php - Custom Post Type Banner
+/**
+ * Custom Post Type Banner
+ */
 
-// Add custom post type Banner
+
+/**
+ * Add custom post type Banner
+ */
 add_action( 'init', function() {
     register_post_type( 'banner', array (
             'labels' => array (
@@ -24,8 +28,15 @@ add_action( 'init', function() {
         ) );
 });
 
-// banner()
-//    returns the string for the homepage banner
+
+/**
+ * Returns the string for the homepage banner
+ *
+ * See also corresponding the_banner() function for displaying the company
+ * address and the 'insert_banner' shortcode.
+ *
+ * @return string - the html string for the banner
+ */
 function banner() {
     global $wp_query;
 

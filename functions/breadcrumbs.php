@@ -1,8 +1,15 @@
 <?php wp_theme_debug(__FILE__, $output_to_header = true);
 
-////////////////////////////////////////////////////////////
-// functions/breadcrumbs.php - breadcrumbs function
+/**
+ * Breadcrumbs functions
+ */
 
+
+/**
+ * Displays the breadcrumbs
+ *
+ * @return null
+ */
 function the_breadcrumbs() {
     global $post; ?>
                 <span class="breadcrumbs">

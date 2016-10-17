@@ -1,11 +1,18 @@
 <?php wp_theme_debug(__FILE__, $output_to_header = true);
 
-////////////////////////////////////////////////////////////
-// functions/company-info.php - functions for displaying company info
+/**
+ * Functions for displaying company info
+ */
 
 
-// get_address()
-//    returns the string for the company address
+/**
+ * Returns the string for the company address
+ *
+ * See also corresponding the_address() function for displaying the company
+ * address.
+ *
+ * @return string
+ */
 function get_address() {
     $address = get_option('co_address');
     $city = get_option('co_city');
@@ -28,8 +35,14 @@ function get_address() {
 function the_address() { echo get_address(); }
 
 
-// get_phone_number()
-//    returns the string for the phone number
+/**
+ * Returns the string for the company phone number
+ *
+ * See also corresponding the_phone_number() function for displaying the
+ * company address.
+ *
+ * @return string
+ */
 function get_phone_number($full = false) {
     $phone_number = get_option('co_phone');
     if ( $phone_number != '' ) { $phone_number = '<a href="tel:+1' . $phone_number . '">' . $phone_number . '</a>'; }
@@ -39,8 +52,14 @@ function get_phone_number($full = false) {
 function the_phone_number($full = false) { echo get_phone_number($full); }
 
 
-// get_company_info()
-//    returns the string with the formatted company info
+/**
+ * Returns the string for the company info (address, phone number, fax number)
+ *
+ * See also corresponding the_company_info() function for displaying the
+ * company info.
+ *
+ * @return string
+ */
 function get_company_info() {
     return '
         <div class="company_info" itemscope itemtype="http://schema.org/LocalBusiness">
@@ -59,8 +78,13 @@ function get_company_info() {
 function the_company_info() { echo get_company_info(); }
 
 
-// get_the_logo()
-//    returns the string with a formatted logo using $image
+/**
+ * Returns the string for the company logo
+ *
+ * See also corresponding the_logo() function for displaying the logo.
+ *
+ * @return string
+ */
 function get_the_logo($image) {
     return '<a href="' . get_site_url() . '" class="logo"><img src="' . get_template_directory_uri() . $image . '" alt="' . get_bloginfo('description') . '"></a>';
 }

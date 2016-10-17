@@ -1,13 +1,27 @@
 <?php wp_theme_debug(__FILE__, $output_to_header = true);
 
-////////////////////////////////////////////////////////////
-// menu.php - menu functions and custom nav menu walker class
+/**
+ * Menu functions and custom nav menu walker class
+ */
 
 
+/**
+ * Register the navigation menu
+ */
 add_action('init', function() {
     register_nav_menu('navigation-menu', 'Main Navigation Menu');
 });
 
+
+/**
+ * Returns the html string for the navigation menu
+ *
+ * See also corresponding the_nav_menu() function for displaying the menu.
+ *
+ * @param int $depth - the number of levels to return
+ *
+ * @return string
+ */
 function get_the_nav_menu( $depth = 1 ) {
     if ( has_nav_menu( 'navigation-menu' ) ) {
         return wp_nav_menu( array(
@@ -23,7 +37,9 @@ function get_the_nav_menu( $depth = 1 ) {
 function the_nav_menu( $depth = 1 ) { echo get_the_nav_menu( $depth ); }
 
 
-// Custom Walker Navigation class
+/**
+ * Custom Walker Navigation Class
+ */
 class CO_NavWalker extends Walker_Nav_Menu {
 
     function start_lvl( &$output, $depth = 0, $args = array() ) {

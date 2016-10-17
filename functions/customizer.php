@@ -1,12 +1,20 @@
 <?php wp_theme_debug(__FILE__, $output_to_header = true);
 
-////////////////////////////////////////////////////////////
-// functions/customizer.php - Customizer hooks and functions
+/**
+ * Functions for customizer hooks and functions
+ */
 
 
-// wp_add_settings_and_controls()
-//      Takes an array of contorl=>labels and a section and sets up the
-//      controls for the customizer.
+/**
+ * A wrapper function to register control settings
+ *
+ * @param WP_Customize $wp_customize
+ * @param string $section
+ * @param array $controls
+ * @param string $type
+ *
+ * @return null
+ */
 function wp_add_settings_and_controls($wp_customize, $section, $controls, $type) {
     foreach ($controls as $control => $label) {
         $wp_customize->add_setting($control);
@@ -25,6 +33,15 @@ function wp_add_settings_and_controls($wp_customize, $section, $controls, $type)
     }
 }
 
+
+/**
+ * Returns the string for the company address
+ *
+ * See also corresponding the_address() function for displaying the company
+ * address.
+ *
+ * @return string
+ */
 add_action( 'customize_register', function($wp_customize) {
     $wp_customize->add_section( 'social_media', array(
         'title' => 'Social Media Links',
