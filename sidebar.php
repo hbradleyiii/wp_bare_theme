@@ -1,6 +1,6 @@
 <?php wp_theme_debug(__FILE__);
 
-////////////////////////////////////////////////////////////
-// sidebar.php - displays page sidebar
-
+/**
+ * Sidebar template
+ */
 

@@ -1,7 +1,8 @@
 <?php wp_theme_debug(__FILE__);
 
-////////////////////////////////////////////////////////////
-// Footer - displays page footer
+/**
+ * Page footer template
+ */
 
 ?>
     <footer>

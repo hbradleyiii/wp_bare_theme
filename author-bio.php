@@ -1,6 +1,6 @@
 <?php wp_theme_debug(__FILE__);
 
-////////////////////////////////////////////////////////////
-// author-bio.php - displays author bio
-
+/**
+ * Author bio template
+ */
 

@@ -1,7 +1,8 @@
 <?php wp_theme_debug(__FILE__);
 
-////////////////////////////////////////////////////////////
-// content-page.php - template for displaying content of pages
+/**
+ * Page content template
+ */
 
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>

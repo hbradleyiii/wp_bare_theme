@@ -1,7 +1,8 @@
 <?php wp_theme_debug(__FILE__, $output_to_header = true);
 
-////////////////////////////////////////////////////////////
-// 404 - page not found template
+/**
+ * Page not found (404) template
+ */
 
 get_header(); ?>
     <main>

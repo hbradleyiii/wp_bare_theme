@@ -1,7 +1,8 @@
 <?php wp_theme_debug(__FILE__, $output_to_header = true);
 
-////////////////////////////////////////////////////////////
-// page.php - default page template
+/**
+ * Default page template
+ */
 
 get_header(); ?>
     <main>

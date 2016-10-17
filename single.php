@@ -1,7 +1,8 @@
 <?php wp_theme_debug(__FILE__, $output_to_header = true);
 
-////////////////////////////////////////////////////////////
-// single.php - default single post template
+/**
+ * Single blog post template
+ */
 
 get_header(); ?>
     <main>

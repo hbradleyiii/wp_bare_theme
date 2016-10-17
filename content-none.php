@@ -1,7 +1,8 @@
 <?php wp_theme_debug(__FILE__);
 
-////////////////////////////////////////////////////////////
-// content-none.php - template for displaying results in none pages
+/**
+ * Blank (not found) content template
+ */
 
 ?>
 <article>

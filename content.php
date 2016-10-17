@@ -1,7 +1,8 @@
 <?php wp_theme_debug(__FILE__);
 
-////////////////////////////////////////////////////////////
-// content.php - default template for displaying content
+/**
+ * Content template
+ */
 
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>

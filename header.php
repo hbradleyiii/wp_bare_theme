@@ -1,7 +1,8 @@
 <?php wp_theme_debug(__FILE__, $output_to_header = true);
 
-////////////////////////////////////////////////////////////
-// header.php - displays header
+/**
+ * Page header template
+ */
 
 ?><!DOCTYPE html>
 <html lang="en-US" class="no-js">

@@ -1,7 +1,8 @@
 <?php wp_theme_debug(__FILE__);
 
-////////////////////////////////////////////////////////////
-// content-search.php - template for displaying results in search pages
+/**
+ * Search page content template
+ */
 
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>

@@ -1,6 +1,6 @@
 <?php wp_theme_debug(__FILE__);
 
-////////////////////////////////////////////////////////////
-// comments.php - displays comments
-
+/**
+ * Page comments template
+ */
 

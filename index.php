@@ -1,7 +1,8 @@
 <?php wp_theme_debug(__FILE__, $output_to_header = true);
 
-////////////////////////////////////////////////////////////
-// index.php - default page template
+/**
+ * Default posts page template
+ */
 
 get_header(); ?>
     <main style="background-image: url( '<?php echo get_template_directory_uri(); ?>/images/office.jpg' )"><?php
