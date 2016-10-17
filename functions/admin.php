@@ -1,29 +1,41 @@
 <?php wp_theme_debug(__FILE__, $output_to_header = true);
 
-////////////////////////////////////////////////////////////
-// functions/admin.php - Admin Customizations
+/**
+ * Admin Customization
+ */
 
 
-// Hide the front-end admin bar when logged in
+/**
+ * Hide the front-end admin bar when logged in
+ */
 add_filter( 'show_admin_bar', function() {
     remove_action( 'wp_head', '_admin_bar_bump_cb' );
     return false;
 });
 
-// Hide wysiwyg editor for home page
+
+/**
+ * Hide wysiwyg editor for home page
+ */
 add_action( 'edit_form_after_editor', function($post) {
     if( $post->ID == get_option('page_on_front') ) {
         echo '<style>#postdivrich { display: none; }</style>';
     }
 });
 
-// Hide Comments and Posts menu items
+
+/**
+ * Hide Comments and Posts menu items
+ */
 add_action( 'admin_menu', function() {
     /* remove_menu_page('edit-comments.php'); */
     /* remove_menu_page('edit.php'); */
 });
 
-// Customize tinymce
+
+/**
+ * Customize tinymce
+ */
 add_filter('tiny_mce_before_init', function($init) {
     $init['block_formats'] = 'Paragraph =p;Header 2=h2;Header 3=h3;Header 4=h4';
     $init['toolbar2'] = 'formatselect,underline,alignjustify,forecolor,pastetext,removeformat,charmap,undo,redo,wp_help';
@@ -41,7 +53,10 @@ add_filter('tiny_mce_before_init', function($init) {
     return $init;
 });
 
-// Setup Site Settings Menu
+
+/**
+ * Setup Site Settings Menu
+ */
 add_action('admin_menu', function() {
     add_options_page(
         'Site Settings',  // Page Title
@@ -59,7 +74,10 @@ add_action('admin_menu', function() {
     );
 });
 
-// Register Site Settings Fields
+
+/**
+ * Register Site Settings Fields
+ */
 add_action('admin_init', function() {
 
     add_settings_section(
@@ -72,7 +90,7 @@ add_action('admin_init', function() {
     add_settings_field(
         'co_address',
         'Company Address',
-        'co_display_settings_field',
+        'wp_display_settings_field',
         'site_settings_page',
         'co_general_section',
         array(
@@ -86,7 +104,7 @@ add_action('admin_init', function() {
     add_settings_field(
         'co_city',
         'City',
-        'co_display_settings_field',
+        'wp_display_settings_field',
         'site_settings_page',
         'co_general_section',
         array(
@@ -100,7 +118,7 @@ add_action('admin_init', function() {
     add_settings_field(
         'co_state',
         'State',
-        'co_display_settings_field',
+        'wp_display_settings_field',
         'site_settings_page',
         'co_general_section',
         array(
@@ -114,7 +132,7 @@ add_action('admin_init', function() {
     add_settings_field(
         'co_zipcode',
         'Zipcode',
-        'co_display_settings_field',
+        'wp_display_settings_field',
         'site_settings_page',
         'co_general_section',
         array(
@@ -128,7 +146,7 @@ add_action('admin_init', function() {
     add_settings_field(
         'co_phone',
         'Company Phone Number',
-        'co_display_settings_field',
+        'wp_display_settings_field',
         'site_settings_page',
         'co_general_section',
         array(
@@ -146,7 +164,15 @@ add_action('admin_init', function() {
     register_setting( 'site_settings', 'co_phone' );
 });
 
-function co_display_settings_field($args) {
+
+/**
+ * Display settings field inputs
+ *
+ * @param  array $args - an array of arguments for displaying an input
+ *
+ * @return null
+ */
+function wp_display_settings_field($args) {
     $value = get_option($args['input_name']);
     $type = $args['input_type'];
     $size = $args['input_size'];
