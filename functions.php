@@ -37,10 +37,7 @@ add_action('wp_enqueue_scripts', function() {
     $template_dir_uri = get_template_directory_uri();
 
     // Scripts
-    if ( !is_admin() ) {
-        wp_deregister_script( 'jquery' );
-        wp_enqueue_script( 'jquery', includes_url( '/js/jquery/jquery.js' ), false, NULL, true );
-    }
+    wp_enqueue_script( 'jquery' );
     if ( WP_DEBUG ) {
         wp_enqueue_script( 'bootstrap', $template_dir_uri . '/js/bootstrap.js', array('jquery'), NULL, true );
     } else {
