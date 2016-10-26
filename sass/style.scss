@@ -12,14 +12,25 @@
 // Import Bootstrap
 @import "bootstrap";
 
-// Import Framework
+
+// Import custom framework
 @import "framework/placeholders";
 @import "framework/mixins";
 @import "framework/reset";
 
-// Import Site Styles
-@import "main";
-@import "header";
-@import "main_nav";
-@import "footer";
-@import "forms";
+
+// Import Bootstrap
+@import "defaults";
+@import "modifieres";
+
+
+// Import site layout styles
+@import "layout/main";
+@import "layout/header";
+@import "layout/main_nav";
+@import "layout/footer";
+@import "layout/forms";
+
+
+// Import modules
+//@import "modules/";
