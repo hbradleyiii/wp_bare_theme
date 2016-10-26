@@ -1,0 +1,54 @@
+#!/bin/bash
+#
+# name:             install
+# author:           Harold Bradley III
+# email:            harold@bradleystudio.net
+# created:          08/11/2016
+#
+# description:      Sets up WordPress and theme
+#
+
+# cp .htaccess file
+# Remove git repository and .gitignore
+# Set up git repository in root
+#
+# Remove this file
+
+TITLE="title"
+ADMIN_USER="USER"
+ADMIN_PASSWORD="PASSWORD"
+ADMIN_EMAIL="EMAIL"
+DOMAIN="google.com"
+DEV_DOMAIN="google.com"
+DBNAME="test"
+DBUSER="test"
+DBPASS="test"
+DBHOST="localhost"
+DEBUG="true"
+
+wp core config --dbname=$DBNAME --dbuser=$DBUSER --dbpass=$DBPASS --dbhost=$DBHOST --skip-check --extra-php <<EOF
+
+define('WP_DEBUG', $DEBUG);
+
+/**
+ * Set the Dev domain.
+ *
+ * When debug is set to true, the site url is set to use the DEV_DOMAIN.
+ */
+define('DEV_DOMAIN', '$DEV_DOMAIN');
+define('DEV_SITEURL', 'http://' . DEV_DOMAIN . '/');
+
+if ( WP_DEBUG || ( \$_SERVER['SERVER_NAME'] == DEV_DOMAIN ) || ( \$_SERVER['HTTP_HOST'] == DEV_DOMAIN ) ) {
+    define('WP_SITEURL', DEV_SITEURL);
+    define('WP_HOME', DEV_SITEURL);
+}
+
+EOF
+
+wp db create
+
+if ! $(wp core is-installed); then
+    wp core install --url=$DOMAIN --title=$TITLE --admin_user=$ADMIN_USER --admin_password=$ADMIN_PASSWORD --admin_email=$ADMIN_EMAIL
+fi
+
+# vim:set ft=sh fdm=marker:
