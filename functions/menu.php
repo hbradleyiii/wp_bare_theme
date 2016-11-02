@@ -42,6 +42,13 @@ function the_nav_menu( $depth = 1 ) { echo get_the_nav_menu( $depth ); }
  */
 class CO_NavWalker extends Walker_Nav_Menu {
 
+    /**
+     * @see Walker::start_lvl()
+     * @since 3.0.0
+     *
+     * @param string $output Passed by reference. Used to append additional content.
+     * @param int $depth Depth of page. Used for padding.
+     */
     function start_lvl( &$output, $depth = 0, $args = array() ) {
         $indent = str_repeat("\t", $depth + 2);
 
@@ -54,11 +61,32 @@ class CO_NavWalker extends Walker_Nav_Menu {
         $output .= "\n$indent<nav class=\"$class_name\">";
     }
 
+    /**
+     * Ends the list of after the elements are added.
+     *
+     * @since 3.0.0
+     *
+     * @see Walker::end_lvl()
+     *
+     * @param string $output Passed by reference. Used to append additional content.
+     * @param int    $depth  Depth of menu item. Used for padding.
+     * @param array  $args   An array of wp_nav_menu() arguments.
+     */
     function end_lvl( &$output, $depth = 0, $args = array() ) {
         $indent = str_repeat("\t", $depth + 2);
         $output .= "\n$indent</nav></div>\n";
     }
 
+    /**
+     * @see Walker::start_el()
+     * @since 3.0.0
+     *
+     * @param string $output Passed by reference. Used to append additional content.
+     * @param object $item Menu item data object.
+     * @param int $depth Depth of menu item. Used for padding.
+     * @param int $current_page Menu item ID.
+     * @param object $args
+     */
     function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
         $indent = str_repeat("\t", $depth + 2);
 
